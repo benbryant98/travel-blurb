@@ -1,0 +1,50 @@
+/* */
+body {
+    font-family: "Times New Roman";
+    color: #0c0a09; 
+    margin: 0;
+    background-color: #668671;
+  }
+  
+  header {
+    padding: 5px;
+    text-align: center;
+  }
+
+  nav {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #87d3a1;
+  }
+
+  main {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+   aside {
+     flex: 1;
+     background-color: #87d3a1;
+     padding: 30px;
+  }
+  
+  
+  section {
+    flex: 5;
+    background-color: #92df9f; 
+    padding: 30px;
+  }
+
+/*.Content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }*/ 
+  
+  footer {
+    padding: 20px;
+    text-align: center;
+    background: #2e3031;
+    color: #7a3333;
+  }
