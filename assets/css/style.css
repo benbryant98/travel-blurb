@@ -1,7 +1,8 @@
 /* */
 body {
-    font-family: "Times New Roman";
-    color: #0c0a09; 
+
+    font-family: 'Source Serif Pro', serif;
+    color: #1d0303; 
     margin: 25px;
     padding: 75px;
     background-color: #668671;
@@ -37,18 +38,24 @@ body {
     padding: 25px;
   }
 
-/*.Content {
+.Content {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-  }*/ 
+  }
   
   footer {
     padding: 20px;
     text-align: center;
-    background: #2e3031;
-    color: #7a3333;
+   /* background: #2e3031;
+    color: #eee8e8;  */
   }
 
  
+  /*@media screen and (max-width: 200px) {
+    .column {
+      width: 50%;
+    }
+  }
+  
