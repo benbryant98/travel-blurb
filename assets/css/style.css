@@ -13,11 +13,25 @@ body {
     text-align: center;
   }
 
-  nav {
+
+  .searchbar {
+    overflow: hidden;
+    background-color: none ;
+  }
+
+.searchbar {
+  float: right;
+  padding: 5px;
+  border: none;
+  font-size: 10px;
+}
+
+
+  /*  nav {
     display: flex;
     flex-wrap: wrap;
     background-color: #87d3a1;
-  }
+  }  */
 
   main {
     display: flex;
