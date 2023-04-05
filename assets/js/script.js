@@ -1,6 +1,7 @@
 $(document).ready(function () {
   var searchForm = $("#search-form");
   var cityNameInput = $("#city-input");
+  var travelFacts = $("#facts-list");
 
   searchForm.on("submit", function (event) {
     event.preventDefault();
@@ -51,7 +52,18 @@ $(document).ready(function () {
     $.ajax(cityDetails).done(function (response) {
       console.log(response);
       countryCode = response.data[0].countryCode;
-      console.log(countryCode);
+
+      let regionFact = $("<p>");
+      let countryFact = $("<p>");
+      let popFact = $("<p>");
+
+      regionFact.text("Region: " + response.data[0].region);
+      countryFact.text("Country: " + response.data[0].country);
+      popFact.text("Population: " + response.data[0].population);
+
+      travelFacts.append(regionFact);
+      travelFacts.append(countryFact);
+      travelFacts.append(popFact);
     });
 
     // setTimeout(getCountryDetails(countryCode), 10000);
