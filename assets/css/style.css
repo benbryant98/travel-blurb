@@ -1,23 +1,42 @@
 /* */
 body {
+  font-family: "Source Serif Pro", serif;
+  color: #1d0303;
 
-    font-family: 'Source Serif Pro', serif;
-    color: #1d0303; 
-    margin: 25px;
-    padding: 75px;
-    background-color: #668671;
-  }
+  background-color: #668671;
+  border-radius: 30px;
+}
+
+.box {
+  border: 1em green;
+  border-radius: 2em;
+  width: 525px;
+  height: 150px;
+  background-color: #92df9f;
+  font-size: 35px;
+
+}
+
+.content-div {
+  margin: 25px;
+  padding: 50px;
+  border: 1em green;
+  border-radius: 2em;
+  background-color: #87d3a1;
   
-  header {
-    padding: 5px;
-    text-align: center;
-  }
+}
+
+header {
+  padding: 50px;
+  text-align: center;
+  flex-wrap: wrap;
+}
 
 
-  .searchbar {
-    overflow: hidden;
-    background-color: none ;
-  }
+.searchbar {
+  overflow: hidden;
+  background-color: none;
+}
 
 .searchbar {
   float: right;
@@ -26,50 +45,47 @@ body {
   font-size: 10px;
 }
 
-
-  /*  nav {
+/*  nav {
     display: flex;
     flex-wrap: wrap;
     background-color: #87d3a1;
   }  */
 
-  main {
-    display: flex;
-    flex-wrap: wrap;
-  }
+main {
+  display: flex;
+  flex-wrap: wrap;
+}
 
-   aside {
-     flex: 1;
-     background-color: #87d3a1;
-     padding: 25px;
+aside {
+  flex: 25;
+  background-color: #87d3a1;
+  padding: 25px;
+}
 
-  }
-  
-  
-  section {
-    flex: 5;
-    background-color: #92df9f; 
-    padding: 25px;
-  }
+section {
+  flex: 5;
+  background-color: #87d3a1;
+  padding: 25px;
+}
 
 .Content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  footer {
-    padding: 20px;
-    text-align: center;
-   /* background: #2e3031;
-    color: #eee8e8;  */
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 
- 
-  /*@media screen and (max-width: 200px) {
-    .column {
-      width: 50%;
-    }
+footer {
+  padding: 35px;
+  text-align: center;
+}
+
+
+@media screen and (max-width: 8000px) {
+  main {
+    width: 50%;
   }
-  
+  aside {
+    order: 2;
+  }
+}
