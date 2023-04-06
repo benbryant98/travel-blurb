@@ -14,7 +14,6 @@ body {
   height: 150px;
   background-color: #92df9f;
   font-size: 35px;
-
 }
 
 .content-div {
@@ -23,7 +22,6 @@ body {
   border: 1em green;
   border-radius: 2em;
   background-color: #87d3a1;
-  
 }
 
 header {
@@ -31,7 +29,6 @@ header {
   text-align: center;
   flex-wrap: wrap;
 }
-
 
 .searchbar {
   overflow: hidden;
@@ -75,11 +72,19 @@ section {
   justify-content: center;
 }
 
+.slide {
+  width: 100%;
+  height: 400px;
+  background-image: url("../../images/ali-maah-zyOeEm4NsPM-unsplash.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center 80%;
+}
+
 footer {
   padding: 35px;
   text-align: center;
 }
-
 
 @media screen and (max-width: 8000px) {
   main {

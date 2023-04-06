@@ -1,15 +1,21 @@
 $(document).ready(function () {
+  // define links to document
   var searchForm = $("#search-form");
   var cityNameInput = $("#city-input");
   var travelFacts = $("#facts-list");
   var weatherFacts = $("#weather-facts");
 
+  // create event for search submit
   searchForm.on("submit", function (event) {
     event.preventDefault();
-    cityName = cityNameInput.val();
-    getCoordinates(cityName);
+    // handles state and country inputs
+    cityName = cityNameInput.val().split(",");
+    commaId = cityName[1];
+    getCoordinates(cityName[0]);
+    localStorage.setItem(cityName[0], JSON.stringify(cityName));
   });
 
+  // function for converting string of city into latitude and longitude
   var getCoordinates = function (cityName) {
     let apiCoord =
       "http://api.openweathermap.org/geo/1.0/direct?q=" +
@@ -24,7 +30,6 @@ $(document).ready(function () {
           cityLon = data[0].lon;
           getCurrentWeather(cityLat, cityLon);
           getCityDetails(cityLat, cityLon);
-          localStorage.setItem(cityName, JSON.stringify(cityName));
         });
       } else {
         alert("Error: " + response.statusText);
@@ -67,8 +72,6 @@ $(document).ready(function () {
       travelFacts.append(popFact);
     });
   };
-
-  var sunriseTime = "";
 
   var getCurrentWeather = function (cityLat, cityLon) {
     const weatherAPI =
