@@ -1,10 +1,10 @@
 /* */
 body {
   font-family: "Source Serif Pro", serif;
-  color: #1d0303;
-
-  background-color: #668671;
+  color: #000000;
+  background-color: #e0e09b;
   border-radius: 30px;
+  text-align: center;
 }
 
 .box {
@@ -12,7 +12,7 @@ body {
   border-radius: 2em;
   width: 525px;
   height: 150px;
-  background-color: #92df9f;
+  background-color: #ffffb9;
   font-size: 35px;
 }
 
@@ -24,29 +24,36 @@ body {
   background-color: #87d3a1;
 }
 
+#blurb-icon {
+  width: 150px;
+  height: auto;
+}
+
 header {
-  padding: 50px;
+  padding: 5px;
   text-align: center;
   flex-wrap: wrap;
 }
 
-.searchbar {
-  overflow: hidden;
-  background-color: none;
+#Travel_Blurb {
+  margin: 100 auto;
+}
+
+.title {
+  text-align: center;
+  vertical-align: center;
 }
 
 .searchbar {
   float: right;
+  width: 500px;
+  height: 250px;
   padding: 5px;
   border: none;
   font-size: 10px;
+  overflow: hidden;
+  background-color: none;
 }
-
-/*  nav {
-    display: flex;
-    flex-wrap: wrap;
-    background-color: #87d3a1;
-  }  */
 
 main {
   display: flex;
@@ -92,5 +99,9 @@ footer {
   }
   aside {
     order: 2;
+  }
+  input {
+    width: 250px;
+    height: 20px;
   }
 }

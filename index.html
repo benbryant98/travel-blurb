@@ -9,11 +9,21 @@
     <link rel="stylesheet" href="./assets/css/style.css" />
   </head>
   <body>
-    <header>
-      <section id="Travel Blurb" class="box">
-        <h1>Travel Blurb</h1>
+  
+<!--search bar-->
+<div class="searchbar">
+  <form id="search-form" class="form">
+    <input type="text" id="city-input" placeholder="Search..." size="50">
+    <button type="submit">&#128269;</button>
+</div>
+
+
+  <header>
+      <section id="Travel_Blurb" class="box">
+        <h1 class="title">Travel Blurb  <img id="blurb-icon" src="assets/images/Travel Blurb 2.png"></h1> 
+        
       </section>
-    </header>
+  </header>
 
 <div class="slide"></div>
     <!-- <div id="image-carousel">
@@ -21,17 +31,12 @@
     </div> -->
 
 <div class="content-div">
-<!--search bar-->
-<div class="searchbar">
-  <form id="search-form" class="form">
-    <input type="text" id="city-input" placeholder="Search...">
-    <button type="submit">&#128269;</button>
-</div>
+
 
 <!--main content inside-->
 <main>
     <aside>
-      <h2>Travel Facts</h2>
+      <h2>Urban Blurb // Rural Blurb</h2>
       <div class="sample-img">Image</div>
       <div id="facts-list"></div>
     </aside>
@@ -51,7 +56,7 @@
     </section>
 
     <aside>
-      <h2>Weather Facts</h2>
+      <h2>Weather Blurb</h2>
       <div class="sample-img">Image</div>
       <div id="weather-facts"></div>
     </aside>
