@@ -2,6 +2,7 @@ $(document).ready(function () {
   var searchForm = $("#search-form");
   var cityNameInput = $("#city-input");
   var travelFacts = $("#facts-list");
+  var weatherFacts = $("#weather-facts");
 
   searchForm.on("submit", function (event) {
     event.preventDefault();
@@ -21,7 +22,7 @@ $(document).ready(function () {
           // saves coordinate values from API response to variables for use in weather functions
           cityLat = data[0].lat;
           cityLon = data[0].lon;
-          // getCurrentWeather(cityLat, cityLon, cityName);
+          getCurrentWeather(cityLat, cityLon);
           getCityDetails(cityLat, cityLon);
           localStorage.setItem(cityName, JSON.stringify(cityName));
         });
@@ -65,24 +66,58 @@ $(document).ready(function () {
       travelFacts.append(countryFact);
       travelFacts.append(popFact);
     });
-
-    // setTimeout(getCountryDetails(countryCode), 10000);
   };
 
-  var getCountryDetails = function (countryCode) {
-    const countryDetails = {
-      async: true,
-      crossDomain: true,
-      url: "https://wft-geo-db.p.rapidapi.com/v1/geo/countries/" + countryCode,
-      method: "GET",
-      headers: {
-        "X-RapidAPI-Key": "77be6e29a1mshf3307506b41c4c1p17afd7jsnde21a1d5a09d",
-        "X-RapidAPI-Host": "wft-geo-db.p.rapidapi.com",
-      },
-    };
+  var sunriseTime = "";
 
-    $.ajax(countryDetails).done(function (response) {
-      console.log(response);
+  var getCurrentWeather = function (cityLat, cityLon) {
+    const weatherAPI =
+      "https://api.openweathermap.org/data/2.5/weather?lat=" +
+      cityLat +
+      "&lon=" +
+      cityLon +
+      "&units=imperial&appid=b87e30ca575aaba2c00121e487cdcd6c";
+
+    fetch(weatherAPI).then(function (response) {
+      if (response.ok) {
+        response.json().then(function (data) {
+          console.log(data);
+
+          var sunriseUnix = data.sys.sunrise;
+          let date = new Date(sunriseUnix * 1000);
+          var sunriseTime = date.getHours() + ":" + date.getMinutes();
+
+          let feelsBlurb = $("<p>");
+          let humidBlurb = $("<p>");
+          let maxBlurb = $("<p>");
+          let minBlurb = $("<p>");
+          let sunriseBlurb = $("<p>");
+          let iconBlurb = $("<img>");
+
+          feelsBlurb.text(
+            "Feels Like: " + Math.trunc(data.main.feels_like) + "\u00b0F"
+          );
+          humidBlurb.text("Humidity: " + data.main.humidity + "%");
+          maxBlurb.text(
+            "Today's High: " + Math.trunc(data.main.temp_max) + "\u00b0F"
+          );
+          minBlurb.text(
+            "Today's Low: " + Math.trunc(data.main.temp_min) + "\u00b0F"
+          );
+          iconBlurb.attr(
+            "src",
+            "https://openweathermap.org/img/w/" + data.weather[0].icon + ".png"
+          );
+          sunriseBlurb.text("Sunrise: " + sunriseTime + " local time");
+
+          weatherFacts.append(iconBlurb);
+          weatherFacts.append(maxBlurb);
+          weatherFacts.append(minBlurb);
+          weatherFacts.append(feelsBlurb);
+          weatherFacts.append(humidBlurb);
+          weatherFacts.append(sunriseBlurb);
+        });
+      }
     });
   };
 });
