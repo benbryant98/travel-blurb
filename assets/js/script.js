@@ -3,6 +3,7 @@ $(document).ready(function () {
   var cityNameInput = $("#city-input");
   var travelFacts = $("#facts-list");
   var weatherFacts = $("#weather-facts");
+  var streetView = $("#streetview");
 
   searchForm.on("submit", function (event) {
     event.preventDefault();
@@ -24,6 +25,7 @@ $(document).ready(function () {
           cityLon = data[0].lon;
           getCurrentWeather(cityLat, cityLon);
           getCityDetails(cityLat, cityLon);
+          getStreetView(cityLat, cityLon);
           localStorage.setItem(cityName, JSON.stringify(cityName));
         });
       } else {
@@ -119,5 +121,15 @@ $(document).ready(function () {
         });
       }
     });
+  };
+
+  var getStreetView = function (cityLat, cityLon) {
+    let source =
+      "https://www.google.com/maps/embed/v1/streetview?key=AIzaSyAn0ozTNUpeqnCrcTGwY1mYqKprIt24XvE&location=" +
+      cityLat +
+      "," +
+      cityLon +
+      "&heading=210&pitch=10&fov=35";
+    streetView.attr("src", source);
   };
 });
