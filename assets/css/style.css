@@ -60,6 +60,11 @@ main {
   flex-wrap: wrap;
 }
 
+#streetview {
+  border: 0;
+  border-radius: 0.9em;
+}
+
 aside {
   flex: 25;
   background-color: #87d3a1;
