@@ -1,14 +1,14 @@
 /* */
 body {
   font-family: "Source Serif Pro", serif;
-  color: #000000;
-  background-color: #e0e09b;
+  color: #595988;
+  background-color:#ccccff;
   border-radius: 30px;
   text-align: center;
 }
 
 .box {
-  border: 1em green;
+  border: 1em #ffffb9;
   border-radius: 2em;
   width: 525px;
   height: 150px;
@@ -19,13 +19,13 @@ body {
 .content-div {
   margin: 25px;
   padding: 50px;
-  border: 1em green;
+  border: 1em #ffffb9;
   border-radius: 2em;
-  background-color: #87d3a1;
+  background-color: #ffffb9;
 }
 
 #blurb-icon {
-  width: 150px;
+  width: 75px;
   height: auto;
 }
 
@@ -67,13 +67,14 @@ main {
 
 aside {
   flex: 25;
-  background-color: #87d3a1;
-  padding: 25px;
+  background-color: #ffffb9;
+  padding: 20px;
+ 
 }
 
 section {
   flex: 5;
-  background-color: #87d3a1;
+  background-color: #ffffb9;
   padding: 25px;
 }
 
@@ -91,6 +92,7 @@ section {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center 80%;
+  border-radius: 25px;
 }
 
 footer {
@@ -98,7 +100,7 @@ footer {
   text-align: center;
 }
 
-@media screen and (max-width: 8000px) {
+@media screen and (max-width: 800px) {
   main {
     width: 50%;
   }
