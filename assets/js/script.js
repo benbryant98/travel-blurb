@@ -152,4 +152,33 @@ $(document).ready(function () {
 
     streetView.attr("src", source);
   };
+
+  var slideIndex = 1;
+  showSlides(slideIndex);
+
+  $(".prev").click(function () {
+    changeSlide(-1);
+  });
+  $(".next").click(function () {
+    changeSlide(1);
+  });
+
+  // handles next and previous slides
+  function changeSlide(n) {
+    showSlides((slideIndex += n));
+  }
+
+  function showSlides(n) {
+    let i;
+    let slides = $(".imgCarousel");
+    if (n > slides.length) {
+      slideIndex = 1;
+    } else if (n < 1) {
+      slideIndex = slides.length;
+    }
+    for (i = 0; i < slides.length; i++) {
+      $(slides[i]).attr("style", "display: none");
+    }
+    $(slides[slideIndex - 1]).attr("style", "display: block");
+  }
 });

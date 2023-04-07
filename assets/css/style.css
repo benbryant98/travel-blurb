@@ -1,8 +1,12 @@
 /* */
+* {
+  box-sizing: border-box;
+}
+
 body {
   font-family: "Source Serif Pro", serif;
   color: #595988;
-  background-color:#ccccff;
+  background-color: #ccccff;
   border-radius: 30px;
   text-align: center;
 }
@@ -69,7 +73,6 @@ aside {
   flex: 25;
   background-color: #ffffb9;
   padding: 20px;
- 
 }
 
 section {
@@ -87,12 +90,45 @@ section {
 
 .slide {
   width: 100%;
-  height: 400px;
-  background-image: url("../../images/ali-maah-zyOeEm4NsPM-unsplash.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center 80%;
   border-radius: 25px;
+  margin: 0;
+  padding: 0;
+}
+
+.imgCarousel {
+  margin: 0;
+  display: none;
+  width: 100%;
+  height: 400px;
+}
+
+/* Next & previous buttons */
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  margin-top: -22px;
+  padding: 16px;
+  color: mediumpurple;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover,
+.next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
 }
 
 footer {
