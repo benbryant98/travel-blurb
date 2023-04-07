@@ -131,11 +131,18 @@ section {
   background-color: rgba(0, 0, 0, 0.8);
 }
 
-footer {
-  padding: 35px;
-  text-align: center;
-}
 
+   /*  .footer {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      border-radius: 15px;
+      background-color: #ffffb9;
+      color: #595988;
+      text-align: center;
+  
+    }*/
+  
 @media screen and (max-width: 800px) {
   main {
     width: 50%;
