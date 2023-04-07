@@ -5,6 +5,7 @@ $(document).ready(function () {
   var travelFacts = $("#facts-list");
   var weatherFacts = $("#weather-facts");
   var streetView = $("#streetview");
+  var searchDiv = $(".searchbar");
 
   // create event for search submit
   searchForm.on("submit", function (event) {
@@ -181,4 +182,25 @@ $(document).ready(function () {
     }
     $(slides[slideIndex - 1]).attr("style", "display: block");
   }
+
+  var setHistoryButtons = function () {
+    for (i = 0; i < localStorage.length; i++) {
+      let historyBtn = $("<button>");
+      historyBtn.addClass("cityBtn");
+      let savedData = JSON.parse(localStorage.getItem(localStorage.key(i)));
+      savedData = savedData.charAt(0).toUpperCase() + savedData.slice(1);
+      historyBtn.text(savedData);
+
+      searchDiv.append(historyBtn);
+    }
+  };
+
+  setHistoryButtons();
+
+  $(document).on("click", ".cityBtn", function () {
+    console.log($(this).text());
+    travelFacts.empty();
+    weatherFacts.empty();
+    getCoordinates($(this).text());
+  });
 });
