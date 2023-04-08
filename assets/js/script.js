@@ -25,7 +25,7 @@ $(document).ready(function () {
   // function for converting string of city into latitude and longitude
   var getCoordinates = function (cityName) {
     let apiCoord =
-      "http://api.openweathermap.org/geo/1.0/direct?q=" +
+      "https://api.openweathermap.org/geo/1.0/direct?q=" +
       cityName +
       "&appid=b87e30ca575aaba2c00121e487cdcd6c";
 
