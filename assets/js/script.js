@@ -6,7 +6,7 @@ $(document).ready(function () {
   var weatherFacts = $("#weather-facts");
   var streetView = $("#streetview");
   var searchDiv = $(".searchbar");
-  var mainDiv = $("#hideFirst");
+  var mainDiv = $("#hide-first");
 
   // create event for search submit
   searchForm.on("submit", function (event) {
@@ -52,7 +52,7 @@ $(document).ready(function () {
 
             // store city name for previous search button
             localStorage.setItem(
-              cityName,
+              cityName[0],
               JSON.stringify(
                 data[0].name + "," + data[0].state + "," + data[0].country
               )
@@ -90,8 +90,11 @@ $(document).ready(function () {
 
       // set element text to response data
       regionFact.text("Region: " + response.data[0].region);
+      regionFact.addClass("my-6");
       countryFact.text("Country: " + response.data[0].country);
+      countryFact.addClass("my-6");
       popFact.text("Population: " + response.data[0].population);
+      popFact.addClass("my-6");
 
       travelFacts.append(regionFact);
       travelFacts.append(countryFact);
@@ -143,6 +146,7 @@ $(document).ready(function () {
             "src",
             "https://openweathermap.org/img/w/" + data.weather[0].icon + ".png"
           );
+          iconBlurb.addClass("weather-icon");
           sunriseBlurb.text("Sunrise: " + sunriseTime + " local time");
 
           weatherFacts.append(iconBlurb);
@@ -168,40 +172,11 @@ $(document).ready(function () {
     streetView.attr("src", source);
   };
 
-  // var slideIndex = 1;
-  // showSlides(slideIndex);
-
-  // $(".prev").click(function () {
-  //   changeSlide(-1);
-  // });
-  // $(".next").click(function () {
-  //   changeSlide(1);
-  // });
-
-  // // handles next and previous slides
-  // function changeSlide(n) {
-  //   showSlides((slideIndex += n));
-  // }
-
-  // function showSlides(n) {
-  //   let i;
-  //   let slides = $(".imgCarousel");
-  //   if (n > slides.length) {
-  //     slideIndex = 1;
-  //   } else if (n < 1) {
-  //     slideIndex = slides.length;
-  //   }
-  //   for (i = 0; i < slides.length; i++) {
-  //     $(slides[i]).attr("style", "display: none");
-  //   }
-  //   $(slides[slideIndex - 1]).attr("style", "display: block");
-  // }
-
   var setHistoryButtons = function () {
     for (i = 0; i < localStorage.length && i < 3; i++) {
       let historyBtn = $("<button>");
       historyBtn.addClass("cityBtn button is-link");
-      
+
       // get stored city name, region, and country
       let savedData = JSON.parse(localStorage.getItem(localStorage.key(i)));
 
