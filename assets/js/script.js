@@ -15,20 +15,23 @@ $(document).ready(function () {
     // prepares the container for next search by deleting existing elements
     travelFacts.empty();
     weatherFacts.empty();
-
-    // handles state and country inputs
-    cityName = cityNameInput.val().split(",");
-    commaId = cityName[1];
-    getCoordinates(cityName[0]);
-
-    localStorage.setItem(cityName[0], JSON.stringify(cityName));
+    getCoordinates(cityNameInput.val());
   });
 
   // function for converting string of city into latitude and longitude
-  var getCoordinates = function (cityName) {
+  var getCoordinates = function (cityNameInput) {
+    var cityName = cityNameInput.split(",");
+    // handles state and country inputs
+    var commaId = cityName[1] || "";
+    var secCommaId = cityName[2] || "";
+
     let apiCoord =
       "https://api.openweathermap.org/geo/1.0/direct?q=" +
-      cityName +
+      cityName[0] +
+      "," +
+      commaId +
+      "," +
+      secCommaId +
       "&appid=b87e30ca575aaba2c00121e487cdcd6c";
 
     fetch(apiCoord).then(function (response) {
@@ -36,17 +39,25 @@ $(document).ready(function () {
         response.json().then(function (data) {
           mainDiv.removeClass("is-invisible");
           // saves coordinate values from API response to variables for use in weather functions
+          if (data.length === 0) {
+            console.log("undefined");
+          } else {
+            cityLat = data[0].lat;
+            cityLon = data[0].lon;
 
-          cityLat = data[0].lat;
-          cityLon = data[0].lon;
+            // execute api call functions
+            getCurrentWeather(cityLat, cityLon);
+            getCityDetails(cityLat, cityLon);
+            getStreetView(cityLat, cityLon);
 
-          // execute api call functions
-          getCurrentWeather(cityLat, cityLon);
-          getCityDetails(cityLat, cityLon);
-          getStreetView(cityLat, cityLon);
-
-          // store city name for previous search button
-          localStorage.setItem(cityName, JSON.stringify(cityName));
+            // store city name for previous search button
+            localStorage.setItem(
+              cityName,
+              JSON.stringify(
+                data[0].name + "," + data[0].state + "," + data[0].country
+              )
+            );
+          }
         });
       } else {
         alert("Error: " + response.statusText);
@@ -86,6 +97,8 @@ $(document).ready(function () {
       travelFacts.append(countryFact);
       travelFacts.append(popFact);
     });
+
+    console.log(cityDetails.url);
   };
 
   var getCurrentWeather = function (cityLat, cityLon) {
@@ -185,12 +198,16 @@ $(document).ready(function () {
   // }
 
   var setHistoryButtons = function () {
-    for (i = 0; i < localStorage.length; i++) {
+    for (i = 0; i < localStorage.length && i < 3; i++) {
       let historyBtn = $("<button>");
       historyBtn.addClass("cityBtn button is-link");
+      
+      // get stored city name, region, and country
       let savedData = JSON.parse(localStorage.getItem(localStorage.key(i)));
-      savedData = savedData.charAt(0).toUpperCase() + savedData.slice(1);
-      historyBtn.text(savedData);
+
+      // split into array and set text to city and region
+      savedData = savedData.split(",");
+      historyBtn.text(savedData[0] + ", " + savedData[1]);
 
       searchDiv.append(historyBtn);
     }
@@ -199,9 +216,11 @@ $(document).ready(function () {
   setHistoryButtons();
 
   $(document).on("click", ".cityBtn", function () {
-    console.log($(this).text());
+    // delete previous content
     travelFacts.empty();
     weatherFacts.empty();
+
+    // fetch data based on city button text
     getCoordinates($(this).text());
   });
 });
