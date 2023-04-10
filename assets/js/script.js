@@ -181,7 +181,8 @@ $(document).ready(function () {
       let savedData = JSON.parse(localStorage.getItem(localStorage.key(i)));
 
       // split into array and set text to city and region
-      savedData = savedData.split(",");
+      console.log(savedData);
+      savedData = savedData.text().split(",");
       historyBtn.text(savedData[0] + ", " + savedData[1]);
 
       searchDiv.append(historyBtn);
