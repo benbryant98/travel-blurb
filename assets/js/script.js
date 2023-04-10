@@ -6,7 +6,7 @@ $(document).ready(function () {
   var weatherFacts = $("#weather-facts");
   var streetView = $("#streetview");
   var searchDiv = $(".searchbar");
-  var contentDiv = $("#hideFirst");
+  var mainDiv = $("#hideFirst");
 
   // create event for search submit
   searchForm.on("submit", function (event) {
@@ -20,7 +20,7 @@ $(document).ready(function () {
     cityName = cityNameInput.val().split(",");
     commaId = cityName[1];
     getCoordinates(cityName[0]);
-    
+
     localStorage.setItem(cityName[0], JSON.stringify(cityName));
   });
 
@@ -34,7 +34,7 @@ $(document).ready(function () {
     fetch(apiCoord).then(function (response) {
       if (response.ok) {
         response.json().then(function (data) {
-          contentDiv.css("visibility: visible;");
+          mainDiv.removeClass("is-invisible");
           // saves coordinate values from API response to variables for use in weather functions
 
           cityLat = data[0].lat;
@@ -72,8 +72,6 @@ $(document).ready(function () {
     };
 
     $.ajax(cityDetails).done(function (response) {
-      console.log(response);
-
       // create elements for response data
       let regionFact = $("<p>");
       let countryFact = $("<p>");
@@ -157,39 +155,39 @@ $(document).ready(function () {
     streetView.attr("src", source);
   };
 
-  var slideIndex = 1;
-  showSlides(slideIndex);
+  // var slideIndex = 1;
+  // showSlides(slideIndex);
 
-  $(".prev").click(function () {
-    changeSlide(-1);
-  });
-  $(".next").click(function () {
-    changeSlide(1);
-  });
+  // $(".prev").click(function () {
+  //   changeSlide(-1);
+  // });
+  // $(".next").click(function () {
+  //   changeSlide(1);
+  // });
 
-  // handles next and previous slides
-  function changeSlide(n) {
-    showSlides((slideIndex += n));
-  }
+  // // handles next and previous slides
+  // function changeSlide(n) {
+  //   showSlides((slideIndex += n));
+  // }
 
-  function showSlides(n) {
-    let i;
-    let slides = $(".imgCarousel");
-    if (n > slides.length) {
-      slideIndex = 1;
-    } else if (n < 1) {
-      slideIndex = slides.length;
-    }
-    for (i = 0; i < slides.length; i++) {
-      $(slides[i]).attr("style", "display: none");
-    }
-    $(slides[slideIndex - 1]).attr("style", "display: block");
-  }
+  // function showSlides(n) {
+  //   let i;
+  //   let slides = $(".imgCarousel");
+  //   if (n > slides.length) {
+  //     slideIndex = 1;
+  //   } else if (n < 1) {
+  //     slideIndex = slides.length;
+  //   }
+  //   for (i = 0; i < slides.length; i++) {
+  //     $(slides[i]).attr("style", "display: none");
+  //   }
+  //   $(slides[slideIndex - 1]).attr("style", "display: block");
+  // }
 
   var setHistoryButtons = function () {
     for (i = 0; i < localStorage.length; i++) {
       let historyBtn = $("<button>");
-      historyBtn.addClass("cityBtn");
+      historyBtn.addClass("cityBtn button is-link");
       let savedData = JSON.parse(localStorage.getItem(localStorage.key(i)));
       savedData = savedData.charAt(0).toUpperCase() + savedData.slice(1);
       historyBtn.text(savedData);
