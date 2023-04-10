@@ -6,6 +6,7 @@ $(document).ready(function () {
   var weatherFacts = $("#weather-facts");
   var streetView = $("#streetview");
   var searchDiv = $(".searchbar");
+  var contentDiv = $("#hideFirst");
 
   // create event for search submit
   searchForm.on("submit", function (event) {
@@ -19,6 +20,7 @@ $(document).ready(function () {
     cityName = cityNameInput.val().split(",");
     commaId = cityName[1];
     getCoordinates(cityName[0]);
+    
     localStorage.setItem(cityName[0], JSON.stringify(cityName));
   });
 
@@ -32,6 +34,7 @@ $(document).ready(function () {
     fetch(apiCoord).then(function (response) {
       if (response.ok) {
         response.json().then(function (data) {
+          contentDiv.css("visibility: visible;");
           // saves coordinate values from API response to variables for use in weather functions
 
           cityLat = data[0].lat;
