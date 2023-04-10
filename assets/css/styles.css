@@ -34,7 +34,7 @@ header {
 }
 
 #hide-first {
-  background-image: url("../images/purple-linen-paper-texture.jpg");
+  background-image: url("/assets/images/purple-linen-paper-texture.jpg");
   height: fit-content;
   background-repeat: no-repeat;
   background-size: cover;
