@@ -182,7 +182,7 @@ $(document).ready(function () {
 
       // split into array and set text to city and region
       console.log(savedData);
-      savedData = savedData.text().split(",");
+      savedData = savedData.split(",");
       historyBtn.text(savedData[0] + ", " + savedData[1]);
 
       searchDiv.append(historyBtn);
