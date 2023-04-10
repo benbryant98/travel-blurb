@@ -3,34 +3,28 @@
   box-sizing: border-box;
 }
 
-body {
-  font-family: "Source Serif Pro", serif;
-  color: #595988;
-  background-color: #ccccff;
-  border-radius: 30px;
-  text-align: center;
+html {
+  background-color: rgb(29, 29, 29);
 }
 
-.box {
-  border: 1em #ffffb9;
-  border-radius: 2em;
-  width: 525px;
-  height: 150px;
-  background-color: #ffffb9;
-  font-size: 35px;
-}
-
-.content-div {
-  margin: 25px;
-  padding: 50px;
-  border: 1em #ffffb9;
-  border-radius: 2em;
-  background-color: #ffffb9;
+#travel-blurb {
+  font-family: "Rubik Beastly";
+  font-size: 48px;
+  color: rgb(194, 171, 240);
+  -webkit-text-stroke: 1px black;
 }
 
 #blurb-icon {
   width: 75px;
   height: auto;
+}
+
+.weather-icon {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  background-color: rgb(218, 217, 191);
+  border-radius: 50%;
 }
 
 header {
@@ -39,8 +33,12 @@ header {
   flex-wrap: wrap;
 }
 
-#Travel_Blurb {
-  margin: 100 auto;
+#hide-first {
+  background-image: url("/assets/images/purple-linen-paper-texture.jpg");
+  height: fit-content;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
 }
 
 .title {
@@ -55,7 +53,6 @@ header {
   padding: 5px;
   border: none;
   font-size: 10px;
-  overflow: hidden;
   background-color: none;
 }
 
@@ -64,85 +61,18 @@ main {
   flex-wrap: wrap;
 }
 
-#streetview {
-  border: 0;
-  border-radius: 0.9em;
-}
-
-aside {
-  flex: 25;
-  background-color: #ffffb9;
-  padding: 20px;
-}
-
-section {
-  flex: 5;
-  background-color: #ffffb9;
-  padding: 25px;
-}
-
-.Content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.slide {
-  width: 100%;
-  border-radius: 25px;
-  margin: 0;
-  padding: 0;
-}
-
-.imgCarousel {
-  margin: 0;
-  display: none;
-  width: 100%;
+.background {
+  background-image: url("/assets/images/ali-maah-zyOeEm4NsPM-unsplash.jpg");
+  background-repeat: no-repeat;
+  background-position: center 70%;
   height: 400px;
+  background-size: cover;
 }
 
-/* Next & previous buttons */
-.prev,
-.next {
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  width: auto;
-  margin-top: -22px;
-  padding: 16px;
-  color: mediumpurple;
-  font-weight: bold;
-  font-size: 18px;
-  transition: 0.6s ease;
-  border-radius: 0 3px 3px 0;
-  user-select: none;
+.form {
+  display: flex;
 }
 
-/* Position the "next button" to the right */
-.next {
-  right: 0;
-  border-radius: 3px 0 0 3px;
-}
-
-/* On hover, add a black background color with a little bit see-through */
-.prev:hover,
-.next:hover {
-  background-color: rgba(0, 0, 0, 0.8);
-}
-
-
-   /*  .footer {
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-      border-radius: 15px;
-      background-color: #ffffb9;
-      color: #595988;
-      text-align: center;
-  
-    }*/
-  
 @media screen and (max-width: 800px) {
   main {
     width: 50%;

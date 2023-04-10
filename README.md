@@ -7,8 +7,10 @@ Travel Blurb is a website that can help any prospective traveler prepare for som
 - OpenWeather API
 - GeoDB API
 - Google Maps JavaScript API
+- Bulma CSS Framework
 
-![Deployed Website](#)
+##
+![Deployed Website](/assets/images/Screenshot.PNG)
 
 # Website Link
 

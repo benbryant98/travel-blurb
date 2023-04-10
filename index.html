@@ -6,90 +6,63 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Travel Blurb</title>
     
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik+Beastly&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./assets/css/style.css" />
   </head>
   <body>
   
-<!--search bar-->
-<div class="searchbar">
-  <form id="search-form" class="form">
-    <input type="text" id="city-input" placeholder="Search..." size="50">
-    <button type="submit">&#128269;</button>
-</div>
-
-<!--icon--> 
-  <header>
-      <section id="Travel_Blurb" class="box">
-        <h1 class="title">Travel Blurb  <img id="blurb-icon" src="assets/images/Travel Blurb 2.png"></h1> 
-        
+    <div class="background">
+    <!--search bar-->
+    <div class="searchbar">
+    <form id="search-form" class="form">
+      <input type="text" id="city-input" class="input is-primary"   placeholder="Search..." size="50">
+      <button class="button is-info is-rounded" type="submit">&#128269;</button>
+    </div>
+  
+    <!--icon--> 
+    <header>
+      <section  class="is-pulled-left">
+        <h1 class="title" id="travel-blurb">Travel Blurb  <img id="blurb-icon" src="assets/images/Travel Blurb 2.png"></h1> 
+      
       </section>
-  </header>
-
-<div class="slide">
-  <div class="imgCarousel fade">
-    <img src="./assets/images/ali-maah-zyOeEm4NsPM-unsplash.jpg">
+    </header>
   </div>
 
-  <div class="imgCarousel fade">
-    <img src="./assets/images/gettyimages-918640178-1675288214.jpg">
-  </div>
+  <!--main content inside urban and rural blurb-->
+  <main id="hide-first" class="is-invisible block is-pulled-left">
+      <aside class="card has-background-info mx-6 mt-6">
+        <h2 class="title is-size-2 is-underlined" >City Blurb</h2>
+        <div class="card-content is-size-3" id="facts-list"></div>
+      </aside>
 
-  <div class="imgCarousel fade">
-    <img src="./assets/images/SYDNEY.jpg">
-  </div>
-
-  <a class="prev" >&#10094;</a>
-  <a class="next" >&#10095;</a>
-</div>
-    <!-- <div id="image-carousel">
-      <img class="slide" src="./images/ali-maah-zyOeEm4NsPM-unsplash.jpg"></img>
-    </div> -->
-
-<div class="content-div">
-
-
-<!--main content inside urban and rural blurb-->
-<main>
-    <aside>
-      <h2>Urban Blurb // Rural Blurb</h2>
-      <div class="sample-img">Image</div>
-      <div id="facts-list"></div>
-    </aside>
-
-    <section>
-      <h2>Take a look around the city!</h2>
-      <div class="sample-img"><iframe
-      width="450"
-      height="250"
-      frameborder="0"
-      id="streetview"
-      referrerpolicy="no-referrer-when-downgrade"
-      src="https://www.google.com/maps/embed/v1/streetview?key=AIzaSyAn0ozTNUpeqnCrcTGwY1mYqKprIt24XvE&location=37.536153,-77.320944&heading=210&pitch=10&fov=35"
-      allowfullscreen
-      >
-    </iframe>
-    </div>
-    </section>
-<!--weather blurb-->
-    <aside>
-      <h2>Weather Blurb</h2>
-      <div class="sample-img">Image</div>
-      <div id="weather-facts"></div>
-    </aside>
-    </div>
-    <script
-      src="https://code.jquery.com/jquery-3.6.4.min.js"
-      integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8="
-      crossorigin="anonymous"
-    ></script>
-    <script src="./assets/js/script.js"></script>
-  </main>
-   
-  <!--footer
-    <div class="footer">
-      <p>Travel Blurb</p>
-    </div>-->
-
-
+      <section class="card mx-6 mt-6 has-background-black">
+        <h2 class="card-header-title is-centered has-text-white">Take a look around the city!</h2>
+        <div class="card-image"><iframe
+        width="500"
+        height="350"
+        frameborder="0"
+        id="streetview"
+        referrerpolicy="no-referrer-when-downgrade"
+        src="https://www.google.com/maps/embed/v1/streetview?key=AIzaSyAn0ozTNUpeqnCrcTGwY1mYqKprIt24XvE&location=37.536153,-77.320944&heading=210&pitch=10&fov=35"
+        allowfullscreen
+        >
+        </iframe>
+        </div>
+      </section>
+    <!--weather blurb-->
+      <aside class="card has-background-danger ml-6 mt-6">
+        <h2 class="title is-size-2 is-centered is-underlined" >Weather Blurb</h2>
+        <div class="card-content is-size-2 is-pulled-right" id="weather-facts"></div>
+      </aside>
+      <script
+        src="https://code.jquery.com/jquery-3.6.4.min.js"
+        integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8="
+        crossorigin="anonymous"
+      ></script>
+      <script src="./assets/js/script.js"></script>
+    </main>
   </body>
 </html>
